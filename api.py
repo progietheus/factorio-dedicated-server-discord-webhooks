@@ -1,13 +1,15 @@
 import requests
 from quart import Quart, render_template, websocket
+import os 
 
+WEBHOOK_URL = os.environ['WEBHOOK_URL']
 app = Quart(__name__)
 
-url = "<webhook url>" 
+url = WEBHOOK_URL
 data = {}
 result = {}
 
-@app.route("/)
+@app.route("/")
 async def start():
     data["content"] = "Factorio monitoring started!"
     data["username"] = "Factorio Bot"
