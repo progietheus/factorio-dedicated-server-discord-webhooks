@@ -2,7 +2,14 @@ import requests
 from quart import Quart, render_template, websocket
 import os 
 
-WEBHOOK_URL = os.environ['WEBHOOK_URL']
+WEBHOOK_URL = os.environ.get('WEBHOOK_URL')
+ON_HEROKU = os.environ.get('ON_HEROKU')
+
+if ON_HEROKU:
+    # get the heroku port
+    port = int(os.environ.get('PORT', 17995))  # as per OP comments default is 17995
+else:
+    port = 5000
 app = Quart(__name__)
 
 url = WEBHOOK_URL
