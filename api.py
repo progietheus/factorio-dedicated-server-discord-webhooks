@@ -14,12 +14,27 @@ app = Quart(__name__)
 
 url = WEBHOOK_URL
 data = {}
-result = {}
+result = {} 
 
 @app.route("/")
 async def index():
-    data["content"] = "Factorio monitoring started!"
-    data["username"] = "Factorio Bot"
+    data["embeds"] = [
+        {
+        "title": "Server monitoring is online!",
+        "color": 7440858,
+        "description": "",
+        "timestamp": "",
+        "author": {},
+        "image": {
+            "url": ""
+        },
+        "thumbnail": {
+            "url": "https://i.imgur.com/kRclrub.gif"
+        },
+        "footer": {},
+        "fields": []
+        }
+    ]
 
     result = requests.post(url, json=data, headers={"Content-Type": "application/json"})
     
@@ -33,8 +48,23 @@ async def index():
 
 @app.route("/server-start")
 async def start():
-    data["content"] = "Factorio is server starting!"
-    data["username"] = "Factorio Bot"
+    data["embeds"] = [
+        {
+        "title": "Factorio server is up and running!",
+        "color": 6749952,
+        "description": "",
+        "timestamp": "",
+        "author": {},
+        "image": {
+            "url": ""
+        },
+        "thumbnail": {
+            "url": "https://i.imgur.com/P4BZ3cY.gif"
+        },
+        "footer": {},
+        "fields": []
+        }
+    ]
 
     result = requests.post(url, json=data, headers={"Content-Type": "application/json"})
 
@@ -48,8 +78,23 @@ async def start():
 
 @app.route("/server-stop")
 async def stop():
-    data["content"] = "Factorio server is stopping..."
-    data["username"] = "Factorio Bot"
+    data["embeds"] = [
+        {
+        "title": "Factorio server shutting down...",
+        "color": 16711680,
+        "description": "",
+        "timestamp": "",
+        "author": {},
+        "image": {
+            "url": ""
+        },
+        "thumbnail": {
+            "url": "https://i.imgur.com/KAKRiTr.gif"
+        },
+        "footer": {},
+        "fields": []
+        }
+    ]
 
     result = requests.post(url, json=data, headers={"Content-Type": "application/json"}) 
     
