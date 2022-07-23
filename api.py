@@ -10,7 +10,7 @@ data = {}
 result = {}
 
 @app.route("/")
-async def start():
+async def index():
     data["content"] = "Factorio monitoring started!"
     data["username"] = "Factorio Bot"
 
